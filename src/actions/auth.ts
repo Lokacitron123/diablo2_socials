@@ -10,6 +10,7 @@ import prisma from "@/lib/db";
 import type { User, Session } from "@/generated/prisma";
 import { cookies } from "next/headers";
 import { cache } from "react";
+import { LoginValues, SignUpValues } from "@/lib/validation";
 
 // Auth & Sessions
 
@@ -141,11 +142,8 @@ export const verifyPassword = async (password: string, hash: string) => {
   return passwordHash === hash;
 };
 
-export const registerUser = async (
-  email: string,
-  username: string,
-  password: string
-) => {
+export const registerUser = async (credentials: SignUpValues) => {
+  const { username, email, password } = credentials;
   const passwordHash = await hashPassword(password);
 
   try {
@@ -189,7 +187,9 @@ export const registerUser = async (
   }
 };
 
-export const loginUser = async (email: string, password: string) => {
+export const loginUser = async (credentials: LoginValues) => {
+  const { email, password } = credentials;
+
   const user = await prisma.user.findUnique({
     where: {
       email: email,
