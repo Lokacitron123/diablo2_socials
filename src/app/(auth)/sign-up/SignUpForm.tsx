@@ -5,7 +5,7 @@ import { SignUpFormValues, SignUpValues } from "@/lib/validation";
 import { useState } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 
-const SignUpForm = () => {
+export const SignUpForm = () => {
   const {
     register,
     handleSubmit,
@@ -133,5 +133,3 @@ const SignUpForm = () => {
     </form>
   );
 };
-
-export default SignUpForm;

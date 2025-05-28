@@ -1,7 +1,7 @@
 import { getCurrentSession } from "@/actions/auth";
 import { redirect } from "next/navigation";
 import React from "react";
-import SignUpForm from "./SignUpForm";
+import { SignUpForm } from "./SignUpForm";
 import Link from "next/link";
 
 export default async function SignUpPage() {
